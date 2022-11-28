@@ -7,7 +7,7 @@ function setup() {
   dark = color(0);
   light = color(255, 0 , 0);
   serial = new p5.SerialPort();
-  serial.open('COM4'); // Cổng nối
+  serial.open('COM4'); 
 }
 
 function drawGradient(c1, c2) {
