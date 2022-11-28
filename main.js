@@ -3,7 +3,7 @@ let bright = 0;
 let dark, light; 
 
 function setup() {
-  createCanvas(512, 512);
+  createCanvas(windowWidth,windowHeight);
   dark = color(0);
   light = color(255, 0 , 0);
   serial = new p5.SerialPort();
@@ -21,6 +21,8 @@ function drawGradient(c1, c2) {
 }
 
 function draw() {
+  let hcn = 1.0;  
+  let hcd = 0.1; 
   drawGradient(dark, light);
   stroke(255);
   strokeWeight(3);
@@ -31,11 +33,14 @@ function draw() {
   rotate(frameCount / 50.0);
   star(0, 0, 20, 100, 20);
   pop();
-  push();
-  translate(width * 0.5, height * 0.25);
-  rotate(frameCount / -100.0);
-  star(0, 0, 30, 70, 5);
-  pop();
+  for(var i = 0 ; i < 12 ; i++){
+    push();
+    translate(width * hcn, height * hcd);
+    rotate(frameCount / -100.0); 
+    star(0, 0, 30, 70, 5);
+    pop();
+    hcn -= 0.17 ; 
+  } 
 } 
 
 function star(x, y, radius1, radius2, npoints) {
